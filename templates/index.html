@@ -1,0 +1,230 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no">
+    <title>CSIBER//ONE | Cinematic Interface</title>
+    <!-- Cinematic Premium Fonts -->
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600&family=Montserrat:wght@200;400;600;800&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="/static/style.css">
+    <!-- THREE.JS FOR REAL 3D/CGI GRAPHICS -->
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/three.js/r128/three.min.js"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/socket.io/4.7.2/socket.io.js"></script>
+</head>
+<body>
+    <!-- Real 3D WebGL Canvas -->
+    <div id="webgl-container"></div>
+    
+    <!-- Cinematic Ambient Glow -->
+    <div class="ambient-glow" id="ambient-glow"></div>
+
+    <nav class="premium-nav">
+        <div class="nav-logo" onclick="app.navigate('home')">CSIBER<span class="light-text">//ONE</span></div>
+        <div class="nav-links desktop-only">
+            <a onclick="app.navigate('home')">Overview</a>
+            <a onclick="app.navigate('timetable')">Timetable</a>
+            <a onclick="app.navigate('attendance')">Attendance</a>
+            <a onclick="app.navigate('sgpa')">Academics</a>
+            <a onclick="app.navigate('connect')">Nexus</a>
+        </div>
+        <div class="nav-actions">
+            <button class="glass-btn-sm" onclick="app.toggleCommandPalette()">
+                <span class="icon">⌕</span> Search <kbd>⌘K</kbd>
+            </button>
+            <div class="creator-tag">AG // ARCHITECT</div>
+        </div>
+    </nav>
+
+    <div id="toast-container"></div>
+
+    <!-- COMMAND PALETTE -->
+    <div class="cmd-palette-overlay" id="cmd-overlay" onclick="app.closeCommandPalette(event)">
+        <div class="glass-cmd">
+            <input type="text" id="cmd-input" placeholder="Search campus modules..." autocomplete="off">
+            <div class="cmd-results" id="cmd-results"></div>
+        </div>
+    </div>
+
+    <main id="main-content">
+        <!-- HOME SECTION -->
+        <section id="home" class="view-section active">
+            <div class="hero">
+                <div class="hero-content">
+                    <h1 class="hero-title">YOUR CAMPUS.<br><span class="gradient-text">ONE INTERFACE.</span></h1>
+                    <p class="hero-subtitle">An elegant, student-built digital layer. Cinematic performance, infinite possibilities.</p>
+                    <div class="hero-buttons">
+                        <button class="btn-primary" onclick="app.navigate('timetable')">ENTER DASHBOARD</button>
+                    </div>
+                    <div class="hero-architect">
+                        ARCHITECTED BY <strong style="color: #fff;">ANUJ GUPTA</strong> <span class="dim">| BCA</span>
+                    </div>
+                </div>
+            </div>
+
+            <!-- 3D TILT CARDS GRID -->
+            <div class="dashboard-grid layout-container">
+                <div class="tilt-card glass-card" onclick="app.navigate('timetable')">
+                    <div class="card-icon">⏱</div>
+                    <h3>Timetable</h3>
+                    <p>Live synchronized scheduling.</p>
+                </div>
+                <div class="tilt-card glass-card" onclick="app.navigate('attendance')">
+                    <div class="card-icon">🛡️</div>
+                    <h3>Attendance Guard</h3>
+                    <p>Algorithmic safety calculations.</p>
+                </div>
+                <div class="tilt-card glass-card" onclick="app.navigate('sgpa')">
+                    <div class="card-icon">📊</div>
+                    <h3>Grade Matrix</h3>
+                    <p>Credit-weighted processing.</p>
+                </div>
+                <div class="tilt-card glass-card" onclick="app.navigate('connect')">
+                    <div class="card-icon">🌐</div>
+                    <h3>Nexus Connect</h3>
+                    <p>Global resource sharing.</p>
+                </div>
+                <div class="tilt-card glass-card" onclick="app.navigate('chat')">
+                    <div class="card-icon">💬</div>
+                    <h3>Live Comms</h3>
+                    <p>Real-time encrypted relays.</p>
+                </div>
+                <div class="tilt-card glass-card" onclick="app.navigate('assistant')">
+                    <div class="card-icon">🤖</div>
+                    <h3>CSIBER AI</h3>
+                    <p>Intelligent campus entity.</p>
+                </div>
+            </div>
+        </section>
+
+        <!-- TIMETABLE SECTION -->
+        <section id="timetable" class="view-section layout-container">
+            <div class="section-header">
+                <h2>Campus Timetable</h2>
+                <p>Synchronized scheduling matrix.</p>
+            </div>
+            <div class="filters glass-card tilt-card" style="display:flex; gap:10px; flex-wrap:wrap;">
+                <select id="tt-prog"><option value="BCA">BCA</option><option value="MCA">MCA</option></select>
+                <select id="tt-batch">
+                    <option value="Batch 2024-27">Batch 2024-27</option>
+                    <option value="Batch 2023-26">Batch 2023-26</option>
+                    <option value="Batch 2024-26">Batch 2024-26 (MCA)</option>
+                </select>
+                <select id="tt-sem"><option value="Semester 1">Semester 1</option><option value="Semester 3">Semester 3</option></select>
+                <button class="btn-primary" onclick="app.loadTimetable()">Render</button>
+            </div>
+            <div id="tt-grid" class="timetable-grid mt-2"></div>
+        </section>
+
+        <!-- ATTENDANCE SECTION -->
+        <section id="attendance" class="view-section layout-container">
+            <div class="section-header">
+                <h2>Attendance Guard</h2>
+                <p>Predictive safety algorithms.</p>
+            </div>
+            <div class="glass-card tilt-card" style="max-width: 600px; margin:0 auto;">
+                <div class="input-group">
+                    <label>Total Working Days Conducted</label>
+                    <input type="number" id="att-total" placeholder="0">
+                </div>
+                <div class="input-group">
+                    <label>Leaves Taken</label>
+                    <input type="number" id="att-absent" placeholder="0">
+                </div>
+                <button class="btn-primary w-100" onclick="app.calcAttendance()">Execute Diagnostics</button>
+                <div id="att-result" class="result-box mt-2 hidden"></div>
+            </div>
+        </section>
+
+        <!-- SGPA/CGPA SECTION -->
+        <section id="sgpa" class="view-section layout-container">
+            <div class="section-header">
+                <h2>Academic Matrix</h2>
+                <div class="tab-buttons mt-1">
+                    <button class="glass-tab active" onclick="app.switchGradeTab('sgpa')">SGPA ENGINE</button>
+                    <button class="glass-tab" onclick="app.switchGradeTab('cgpa')">CGPA ENGINE</button>
+                </div>
+            </div>
+            <div id="sgpa-calc" class="glass-card tilt-card" style="max-width: 800px; margin:0 auto;">
+                <div id="sgpa-rows"></div>
+                <button class="glass-btn-sm mt-1" onclick="app.addSgpaRow()">+ Add Field</button>
+                <button class="btn-primary w-100 mt-2" onclick="app.calcSgpa()">Process SGPA</button>
+                <div id="sgpa-result" class="result-box mt-2 hidden"></div>
+            </div>
+            <div id="cgpa-calc" class="glass-card tilt-card hidden" style="max-width: 800px; margin:0 auto;">
+                 <div id="cgpa-rows"></div>
+                 <button class="glass-btn-sm mt-1" onclick="app.addCgpaRow()">+ Add Field</button>
+                 <button class="btn-primary w-100 mt-2" onclick="app.calcCgpa()">Process CGPA</button>
+                 <div id="cgpa-result" class="result-box mt-2 hidden"></div>
+            </div>
+        </section>
+
+        <!-- CLASS CONNECT -->
+        <section id="connect" class="view-section layout-container">
+            <div class="section-header flex-between">
+                <div>
+                    <h2>Nexus Connect</h2>
+                    <p>Global resource sharing hub.</p>
+                </div>
+                <button class="btn-primary" onclick="app.togglePostModal()">Upload Data</button>
+            </div>
+            <div id="posts-feed" class="feed-grid"></div>
+        </section>
+
+        <!-- LIVE CHAT -->
+        <section id="chat" class="view-section layout-container">
+            <div class="section-header">
+                <h2>Live Comms</h2>
+                <p>Real-time encrypted relays.</p>
+            </div>
+            <div class="chat-container glass-card tilt-card">
+                <div id="chat-messages" class="chat-box"></div>
+                <div class="chat-input-area">
+                    <input type="text" id="chat-name" placeholder="ID (Opt)" style="width: 120px;">
+                    <input type="text" id="chat-msg" placeholder="Transmit message..." onkeypress="app.checkChatEnter(event)" style="flex:1;">
+                    <button class="btn-primary" onclick="app.sendChatMessage()">Send</button>
+                </div>
+            </div>
+        </section>
+
+        <!-- ASSISTANT -->
+        <section id="assistant" class="view-section layout-container">
+            <div class="section-header">
+                <h2>CSIBER Entity</h2>
+                <p>Intelligent knowledge processing.</p>
+            </div>
+            <div class="chat-container glass-card tilt-card ai-chat">
+                <div id="ai-messages" class="chat-box">
+                    <div class="msg ai"><div class="msg-bubble">I am online. How may I assist your campus navigation?</div></div>
+                </div>
+                <div class="chat-input-area">
+                    <input type="text" id="ai-input" placeholder="Enter query..." onkeypress="app.checkAiEnter(event)" style="flex:1;">
+                    <button class="btn-primary" onclick="app.askAi()">Process</button>
+                </div>
+            </div>
+        </section>
+    </main>
+
+    <!-- POST MODAL -->
+    <div id="post-modal" class="modal-overlay hidden">
+        <div class="glass-card" style="width: 90%; max-width: 500px;">
+            <h3>Data Upload</h3>
+            <div class="mt-2">
+                <input type="text" id="post-author" placeholder="Entity ID (Optional)">
+                <select id="post-category">
+                    <option value="Doubt">Query</option>
+                    <option value="Resource">Resource</option>
+                    <option value="Notice">Notice</option>
+                </select>
+                <textarea id="post-msg" placeholder="Enter log details..."></textarea>
+                <input type="file" id="post-file" accept=".pdf,.png,.jpg,.jpeg,.doc,.docx,.txt">
+            </div>
+            <div class="modal-actions mt-2" style="display:flex; gap:10px;">
+                <button class="glass-btn-sm" style="flex:1" onclick="app.togglePostModal()">Cancel</button>
+                <button class="btn-primary" style="flex:1" onclick="app.submitPost()">Transmit</button>
+            </div>
+        </div>
+    </div>
+    
+    <script src="/static/app.js"></script>
+</body>
+</html>

@@ -1,0 +1,81 @@
+{
+  "BCA": {
+    "Batch 2024-27": {
+      "Semester 1": {
+        "Monday": [
+          {"time": "10:00 - 11:00", "subject": "CC102", "faculty": "Prof. RTT", "room": "Classroom"},
+          {"time": "11:00 - 12:00", "subject": "CC101", "faculty": "Prof. MSP", "room": "Classroom"},
+          {"time": "12:00 - 01:00", "subject": "LAB I", "faculty": "Prof. MSP", "room": "Lab 1"},
+          {"time": "02:00 - 03:00", "subject": "MDE101", "faculty": "Prof. RM", "room": "Classroom"}
+        ],
+        "Tuesday": [
+          {"time": "10:00 - 11:00", "subject": "CC102", "faculty": "Prof. RTT", "room": "Classroom"},
+          {"time": "11:00 - 12:00", "subject": "CC101", "faculty": "Prof. MSP", "room": "Classroom"},
+          {"time": "12:00 - 01:00", "subject": "LAB I", "faculty": "Prof. MSP", "room": "Lab 1"},
+          {"time": "02:00 - 03:00", "subject": "AEC101", "faculty": "Prof. KS", "room": "Classroom"}
+        ],
+        "Wednesday": [
+          {"time": "10:00 - 11:00", "subject": "CC101", "faculty": "Prof. MSP", "room": "Classroom"},
+          {"time": "11:00 - 12:00", "subject": "MDE101", "faculty": "Prof. RM", "room": "Classroom"},
+          {"time": "12:00 - 01:00", "subject": "VAC101", "faculty": "Prof. KS", "room": "Classroom"},
+          {"time": "02:00 - 03:00", "subject": "LAB III", "faculty": "Prof. RRM", "room": "Lab 3"}
+        ],
+        "Thursday": [
+          {"time": "10:00 - 11:00", "subject": "SEC101", "faculty": "Prof. NNK", "room": "Classroom"},
+          {"time": "11:00 - 12:00", "subject": "CC102", "faculty": "Prof. RTT", "room": "Classroom"},
+          {"time": "12:00 - 01:00", "subject": "LAB I", "faculty": "Prof. RTT", "room": "Lab 1"},
+          {"time": "02:00 - 03:00", "subject": "AEC102", "faculty": "Prof. MKP", "room": "Classroom"}
+        ],
+        "Friday": [
+          {"time": "10:00 - 11:00", "subject": "SEC101", "faculty": "Prof. NNK", "room": "Classroom"},
+          {"time": "11:00 - 12:00", "subject": "LAB I", "faculty": "Prof. RTT", "room": "Lab 1"},
+          {"time": "12:00 - 01:00", "subject": "AEC101", "faculty": "Prof. KS", "room": "Classroom"},
+          {"time": "02:00 - 03:00", "subject": "CC102", "faculty": "Prof. RTT", "room": "Classroom"}
+        ],
+        "Saturday": [
+          {"time": "10:00 - 11:00", "subject": "CC101", "faculty": "Prof. MSP", "room": "Classroom"},
+          {"time": "11:00 - 12:00", "subject": "AEC102", "faculty": "Prof. MKP", "room": "Classroom"},
+          {"time": "12:00 - 01:00", "subject": "SEC101", "faculty": "Prof. NNK", "room": "Classroom"},
+          {"time": "02:00 - 03:00", "subject": "VAC101", "faculty": "Prof. KS", "room": "Classroom"},
+          {"time": "03:00 - 04:00", "subject": "SEC101", "faculty": "Prof. NNK", "room": "Classroom"}
+        ]
+      }
+    },
+    "Batch 2023-26": {
+      "Semester 3": {
+        "Monday": [
+          {"time": "11:00 - 12:00", "subject": "MM-301", "faculty": "Prof. DSP", "room": "Classroom"},
+          {"time": "12:00 - 01:00", "subject": "AEC-301", "faculty": "Prof. SAN", "room": "Classroom"},
+          {"time": "02:00 - 03:00", "subject": "MM-302", "faculty": "Prof. NNK", "room": "Classroom"},
+          {"time": "03:00 - 04:00", "subject": "LAB I", "faculty": "Prof. PMP", "room": "Lab 1"}
+        ],
+        "Tuesday": [
+          {"time": "11:00 - 12:00", "subject": "MN-301", "faculty": "Prof. MBP", "room": "Classroom"},
+          {"time": "12:00 - 01:00", "subject": "MN-302", "faculty": "Prof. RRM", "room": "Classroom"},
+          {"time": "02:00 - 03:00", "subject": "MM-303", "faculty": "Prof. PMP", "room": "Classroom"},
+          {"time": "03:00 - 04:00", "subject": "LAB I", "faculty": "Prof. PMP", "room": "Lab 1"}
+        ]
+      }
+    }
+  },
+  "MCA": {
+    "Batch 2024-26": {
+      "Semester 1": {
+        "Monday": [
+          {"time": "10:00 - 12:00", "subject": "LAB I", "faculty": "MCA Dept", "room": "Lab I"},
+          {"time": "12:00 - 01:00", "subject": "MCA103", "faculty": "Prof. SAS", "room": "Classroom"},
+          {"time": "02:00 - 03:00", "subject": "MCA104", "faculty": "Prof. SDB", "room": "Classroom"},
+          {"time": "03:00 - 04:00", "subject": "MCA101", "faculty": "Prof. ADS", "room": "Classroom"},
+          {"time": "04:00 - 05:00", "subject": "MCA102", "faculty": "Prof. RTT", "room": "Classroom"}
+        ],
+        "Tuesday": [
+          {"time": "10:00 - 12:00", "subject": "LAB I", "faculty": "MCA Dept", "room": "Lab I"},
+          {"time": "12:00 - 01:00", "subject": "MCA102", "faculty": "Prof. RTT", "room": "Classroom"},
+          {"time": "02:00 - 03:00", "subject": "MCA105", "faculty": "Prof. SSJ", "room": "Classroom"},
+          {"time": "03:00 - 04:00", "subject": "MCA101", "faculty": "Prof. ADS", "room": "Classroom"},
+          {"time": "04:00 - 05:00", "subject": "MCA107", "faculty": "Prof. RMP", "room": "Classroom"}
+        ]
+      }
+    }
+  }
+}

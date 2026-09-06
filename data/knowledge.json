@@ -1,0 +1,18 @@
+[
+  {
+    "keywords": ["bca duration", "how long is bca", "bca years"],
+    "answer": "The BCA programme at CSIBER is a 3-year full-time course spread across 6 semesters."
+  },
+  {
+    "keywords": ["attendance", "minimum attendance"],
+    "answer": "You need to maintain a minimum of 80% attendance to safely appear for examinations. Use the Attendance Guard tool on this platform to calculate your safe leaves."
+  },
+  {
+    "keywords": ["sgpa", "cgpa", "calculate"],
+    "answer": "SGPA is calculated as Σ(Credit × Grade Point) / Σ(Credits). You can use the built-in SGPA/CGPA tools in CSIBER//ONE for instant calculations."
+  },
+  {
+    "keywords": ["creator", "who made", "architect", "built", "anuj"],
+    "answer": "CSIBER//ONE was architected and developed by Anuj Gupta (BCA • CSIBER) as a digital utility layer for students."
+  }
+]
